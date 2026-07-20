@@ -1,52 +1,104 @@
 import streamlit as st
 import pandas as pd
-import joblib
+import pickle
 
-# Load trained model
-model = joblib.load("GradientBoosting_model.pkl")
-
+# -------------------- PAGE CONFIG --------------------
 st.set_page_config(
-    page_title="Stock Price Prediction",
+    page_title="Stock Volume Prediction",
     page_icon="📈",
-    layout="centered"
+    layout="wide"
 )
 
-st.title("📈 Stock Price Prediction")
-st.write("Enter the stock details below to predict the closing price.")
+# -------------------- LOAD MODEL --------------------
+@st.cache_resource
+def load_model():
+    with open("GradientBoosting_model.pkl", "rb") as f:
+        return pickle.load(f)
 
-# User Inputs
-open_price = st.number_input("Open Price", min_value=0.0, format="%.2f")
-high = st.number_input("High Price", min_value=0.0, format="%.2f")
-low = st.number_input("Low Price", min_value=0.0, format="%.2f")
-prev_close = st.number_input("Previous Close", min_value=0.0, format="%.2f")
-tottrdqty = st.number_input("Total Traded Quantity", min_value=0.0, format="%.2f")
-tottrdval = st.number_input("Total Traded Value", min_value=0.0, format="%.2f")
-total_trades = st.number_input("Total Trades", min_value=0.0, format="%.2f")
+model = load_model()
 
-# Prediction Button
-if st.button("Predict Closing Price"):
+# -------------------- TITLE --------------------
+st.title("📈 Stock Volume Prediction using Gradient Boosting")
+st.write("Enter the stock details below.")
 
-    data = pd.DataFrame([[
-        open_price,
-        high,
-        low,
-        prev_close,
-        tottrdqty,
-        tottrdval,
-        total_trades
-    ]], columns=[
-        "OPEN",
-        "HIGH",
-        "LOW",
-        "PREV. CLOSE",
-        "Tottrdqty",
-        "Tottrdval",
-        "Total_Trades"
-    ])
+# ======================================================
+# IMPORTANT
+# Replace this dictionary with YOUR LabelEncoder mapping
+# ======================================================
+symbol_to_int = {
+    "RELIANCE": 0,
+    "TCS": 1,
+    "INFY": 2,
+    "HDFCBANK": 3,
+    "ICICIBANK": 4,
+}
 
-    prediction = model.predict(data)
+# -------------------- SIDEBAR --------------------
+st.sidebar.header("Input Features")
 
-    st.success(f"Predicted Closing Price: ₹ {prediction[0]:.2f}")
+symbol = st.sidebar.selectbox(
+    "SYMBOL",
+    list(symbol_to_int.keys())
+)
 
-    st.subheader("Input Data")
-    st.dataframe(data)
+open_price = st.sidebar.number_input("OPEN", value=1000.0)
+high = st.sidebar.number_input("HIGH", value=1010.0)
+low = st.sidebar.number_input("LOW", value=990.0)
+prev_close = st.sidebar.number_input("PREV. CLOSE", value=995.0)
+ltp = st.sidebar.number_input("LTP", value=1002.0)
+indicative_close = st.sidebar.number_input("INDICATIVE CLOSE", value=1002.0)
+change = st.sidebar.number_input("CHANGE", value=5.0)
+percent_change = st.sidebar.number_input("% CHANGE", value=0.50)
+value = st.sidebar.number_input("VALUE (Crores)", value=100.0)
+high52 = st.sidebar.number_input("52W H", value=1200.0)
+low52 = st.sidebar.number_input("52W L", value=800.0)
+change30 = st.sidebar.number_input("30 D %CHNG", value=2.5)
+change365 = st.sidebar.number_input("365 D %CHNG", value=12.0)
+
+symbol_encoded = symbol_to_int.get(symbol, 0)
+
+features = pd.DataFrame({
+    "SYMBOL": [symbol_encoded],
+    "OPEN": [open_price],
+    "HIGH": [high],
+    "LOW": [low],
+    "PREV. CLOSE": [prev_close],
+    "LTP": [ltp],
+    "INDICATIVE CLOSE": [indicative_close],
+    "CHANGE": [change],
+    "% CHANGE": [percent_change],
+    "VALUE (Crores)": [value],
+    "52W H": [high52],
+    "52W L": [low52],
+    "30 D %CHNG": [change30],
+    "365 D %CHNG": [change365],
+})
+
+features = features.reindex(columns=model.feature_names_in_)
+
+st.subheader("Input Data")
+st.dataframe(features)
+
+if st.button("Predict"):
+
+    try:
+        prediction = model.predict(features)
+
+        st.success("Prediction Successful!")
+
+        st.metric(
+            label="Predicted Volume",
+            value=f"{prediction[0]:,.0f}"
+        )
+
+    except Exception as e:
+        st.error(e)
+
+        st.write("Model expects these columns:")
+        st.write(model.feature_names_in_)
+
+        st.write("Columns received:")
+        st.write(features.columns.tolist())
+
+        st.write("Data Types:")
+        st.write(features.dtypes)
