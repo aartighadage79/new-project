@@ -1,0 +1,74 @@
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+venv/
+.venv/
+env/
+ENV/
+
+# Jupyter Notebook
+.ipynb_checkpoints/
+
+# VS Code
+.vscode/
+
+# PyCharm
+.idea/
+
+# macOS
+.DS_Store
+
+# Linux
+*~
+
+# Windows
+Thumbs.db
+Desktop.ini
+
+# Environment variables
+.env
+.env.*
+
+# Python distribution
+build/
+dist/
+*.egg-info/
+.eggs/
+
+# Logs
+*.log
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Type checking
+.mypy_cache/
+
+# Ruff
+.ruff_cache/
+
+# Flask
+instance/
+.webassets-cache/
+
+# Streamlit
+.streamlit/secrets.toml
+
+# Model files (Uncomment if you DON'T want to upload trained models)
+# *.pkl
+# *.joblib
+# *.h5
+# *.keras
+
+# Large datasets (Uncomment if you DON'T want to upload datasets)
+# *.csv
+# *.xlsx
+
+# Temporary files
+*.tmp
+*.temp
