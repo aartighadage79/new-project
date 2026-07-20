@@ -1,7 +1,7 @@
 import streamlit as st
 import pandas as pd
 import pickle
-
+import yfinance as yf
 # -------------------- PAGE CONFIG --------------------
 st.set_page_config(
     page_title="Stock Volume Prediction",
@@ -19,6 +19,52 @@ model = load_model()
 
 # -------------------- TITLE --------------------
 st.title("📈 Stock Volume Prediction")
+symbol = st.text_input(
+    "Enter Stock Symbol",
+    value="TCS.NS"
+)
+if symbol:
+
+    stock = yf.Ticker(symbol)
+
+    data = stock.history(period="2d")
+
+    if not data.empty:
+
+        latest = data.iloc[-1]
+
+        open_price = latest["Open"]
+        high = latest["High"]
+        low = latest["Low"]
+        close = latest["Close"]
+        volume = latest["Volume"]
+        st.subheader("Live Stock Data")
+
+st.write("Open:", round(open_price, 2))
+st.write("High:", round(high, 2))
+st.write("Low:", round(low, 2))
+st.write("Current Price:", round(close, 2))
+st.write("Volume:", int(volume))
+        input_data = pd.DataFrame(
+            [[
+                open_price,
+                high,
+                low,
+                close,
+                volume
+            ]],
+            columns=[
+                "OPEN",
+                "HIGH",
+                "LOW",
+                "PREV. CLOSE",
+                "VOLUME (shares)"
+            ]
+        )
+
+        prediction = model.predict(input_data)
+
+        st.success(f"Predicted Price: ₹{prediction[0]:.2f}")
 st.write("Enter the stock details below.")
 
 # ======================================================
