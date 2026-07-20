@@ -18,7 +18,7 @@ def load_model():
 model = load_model()
 
 # -------------------- TITLE --------------------
-st.title("📈 Stock Volume Prediction using Gradient Boosting")
+st.title("📈 Stock Volume Prediction")
 st.write("Enter the stock details below.")
 
 # ======================================================
