@@ -18,53 +18,49 @@ def load_model():
 model = load_model()
 
 # -------------------- TITLE --------------------
+# -------------------- TITLE --------------------
 st.title("📈 Stock Volume Prediction")
-symbol = st.text_input(
+
+# Live Stock Data
+st.subheader("Live Stock Data")
+
+live_symbol = st.text_input(
     "Enter Stock Symbol",
     value="TCS.NS"
 )
-if symbol:
 
-    stock = yf.Ticker(symbol)
+if live_symbol:
 
-    data = stock.history(period="2d")
+    try:
+        stock = yf.Ticker(live_symbol)
 
-    if not data.empty:
+        data = stock.history(period="2d")
 
-        latest = data.iloc[-1]
+        if not data.empty:
 
-        open_price = latest["Open"]
-        high = latest["High"]
-        low = latest["Low"]
-        close = latest["Close"]
-        volume = latest["Volume"]
-        st.subheader("Live Stock Data")
+            latest = data.iloc[-1]
 
-st.write("Open:", round(open_price, 2))
-st.write("High:", round(high, 2))
-st.write("Low:", round(low, 2))
-st.write("Current Price:", round(close, 2))
-st.write("Volume:", int(volume))
-        input_data = pd.DataFrame(
-            [[
-                open_price,
-                high,
-                low,
-                close,
-                volume
-            ]],
-            columns=[
-                "OPEN",
-                "HIGH",
-                "LOW",
-                "PREV. CLOSE",
-                "VOLUME (shares)"
-            ]
-        )
+            open_price = latest["Open"]
+            high = latest["High"]
+            low = latest["Low"]
+            close = latest["Close"]
+            volume = latest["Volume"]
 
-        prediction = model.predict(input_data)
+            st.write("### Today's Market Data")
+            st.write(f"**Open:** ₹{open_price:.2f}")
+            st.write(f"**High:** ₹{high:.2f}")
+            st.write(f"**Low:** ₹{low:.2f}")
+            st.write(f"**Current Price:** ₹{close:.2f}")
+            st.write(f"**Volume:** {int(volume):,}")
 
-        st.success(f"Predicted Price: ₹{prediction[0]:.2f}")
+        else:
+            st.warning("No live data found.")
+
+    except Exception as e:
+        st.error(f"Error fetching stock data: {e}")
+
+st.write("Enter the stock details below.")
+       
 st.write("Enter the stock details below.")
 
 # ======================================================
