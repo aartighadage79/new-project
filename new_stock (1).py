@@ -1,0 +1,187 @@
+{
+ "cells": [
+  {
+   "cell_type": "code",
+   "execution_count": 12,
+   "id": "3f2fdd8a-5161-43e5-8ef6-0631eef8491c",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stderr",
+     "output_type": "stream",
+     "text": [
+      "2026-07-20 13:10:08.153 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n",
+      "2026-07-20 13:10:08.156 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n",
+      "2026-07-20 13:10:08.157 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n",
+      "2026-07-20 13:10:08.159 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n",
+      "2026-07-20 13:10:08.162 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n",
+      "2026-07-20 13:10:08.162 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n",
+      "2026-07-20 13:10:08.166 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n",
+      "2026-07-20 13:10:08.167 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n",
+      "2026-07-20 13:10:08.169 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n",
+      "2026-07-20 13:10:08.174 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n",
+      "2026-07-20 13:10:08.178 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n",
+      "2026-07-20 13:10:08.184 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n",
+      "2026-07-20 13:10:08.184 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n",
+      "2026-07-20 13:10:08.186 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n",
+      "2026-07-20 13:10:08.188 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n",
+      "2026-07-20 13:10:08.190 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n",
+      "2026-07-20 13:10:08.190 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n",
+      "2026-07-20 13:10:08.190 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n",
+      "2026-07-20 13:10:08.196 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n",
+      "2026-07-20 13:10:08.199 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n",
+      "2026-07-20 13:10:08.202 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n",
+      "2026-07-20 13:10:08.204 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n",
+      "2026-07-20 13:10:08.205 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n",
+      "2026-07-20 13:10:08.208 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n",
+      "2026-07-20 13:10:08.208 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n",
+      "2026-07-20 13:10:08.210 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n",
+      "2026-07-20 13:10:08.213 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n",
+      "2026-07-20 13:10:08.216 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n",
+      "2026-07-20 13:10:08.217 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n",
+      "2026-07-20 13:10:08.217 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n",
+      "2026-07-20 13:10:08.222 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n",
+      "2026-07-20 13:10:08.222 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n",
+      "2026-07-20 13:10:08.228 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n",
+      "2026-07-20 13:10:08.228 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n",
+      "2026-07-20 13:10:08.234 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n",
+      "2026-07-20 13:10:08.236 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n",
+      "2026-07-20 13:10:08.240 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n",
+      "2026-07-20 13:10:08.240 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n",
+      "2026-07-20 13:10:08.244 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n",
+      "2026-07-20 13:10:08.251 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n",
+      "2026-07-20 13:10:08.255 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n",
+      "2026-07-20 13:10:08.258 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n",
+      "2026-07-20 13:10:08.258 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n",
+      "2026-07-20 13:10:08.268 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n",
+      "2026-07-20 13:10:08.268 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n",
+      "2026-07-20 13:10:08.268 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n",
+      "2026-07-20 13:10:08.274 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n",
+      "2026-07-20 13:10:08.276 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n",
+      "2026-07-20 13:10:08.276 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n",
+      "2026-07-20 13:10:08.283 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n",
+      "2026-07-20 13:10:08.283 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n",
+      "2026-07-20 13:10:08.286 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n",
+      "2026-07-20 13:10:08.288 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n",
+      "2026-07-20 13:10:08.288 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n",
+      "2026-07-20 13:10:08.288 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n",
+      "2026-07-20 13:10:08.299 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n",
+      "2026-07-20 13:10:08.304 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n",
+      "2026-07-20 13:10:08.304 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n",
+      "2026-07-20 13:10:08.307 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n",
+      "2026-07-20 13:10:08.307 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n",
+      "2026-07-20 13:10:08.307 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n",
+      "2026-07-20 13:10:08.315 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.\n"
+     ]
+    }
+   ],
+   "source": [
+    "\n",
+    "import streamlit as st\n",
+    "import pandas as pd\n",
+    "import joblib\n",
+    "\n",
+    "# Load trained model\n",
+    "model = joblib.load(\"GradientBoosting_model.pkl\")\n",
+    "\n",
+    "st.set_page_config(\n",
+    "    page_title=\"Stock Price Prediction\",\n",
+    "    page_icon=\"📈\",\n",
+    "    layout=\"centered\"\n",
+    ")\n",
+    "\n",
+    "st.title(\"📈 Stock Price Prediction\")\n",
+    "st.write(\"Enter the stock details below to predict the closing price.\")\n",
+    "\n",
+    "# User Inputs\n",
+    "open_price = st.number_input(\"Open Price\", min_value=0.0, format=\"%.2f\")\n",
+    "high = st.number_input(\"High Price\", min_value=0.0, format=\"%.2f\")\n",
+    "low = st.number_input(\"Low Price\", min_value=0.0, format=\"%.2f\")\n",
+    "prev_close = st.number_input(\"Previous Close\", min_value=0.0, format=\"%.2f\")\n",
+    "tottrdqty = st.number_input(\"Total Traded Quantity\", min_value=0.0, format=\"%.2f\")\n",
+    "tottrdval = st.number_input(\"Total Traded Value\", min_value=0.0, format=\"%.2f\")\n",
+    "total_trades = st.number_input(\"Total Trades\", min_value=0.0, format=\"%.2f\")\n",
+    "\n",
+    "# Prediction Button\n",
+    "if st.button(\"Predict Closing Price\"):\n",
+    "\n",
+    "    data = pd.DataFrame([[\n",
+    "        open_price,\n",
+    "        high,\n",
+    "        low,\n",
+    "        prev_close,\n",
+    "        tottrdqty,\n",
+    "        tottrdval,\n",
+    "        total_trades\n",
+    "    ]], columns=[\n",
+    "        \"OPEN\",\n",
+    "        \"HIGH\",\n",
+    "        \"LOW\",\n",
+    "        \"PREV. CLOSE\",\n",
+    "        \"Tottrdqty\",\n",
+    "        \"Tottrdval\",\n",
+    "        \"Total_Trades\"\n",
+    "    ])\n",
+    "\n",
+    "    prediction = model.predict(data)\n",
+    "\n",
+    "    st.success(f\"Predicted Closing Price: ₹ {prediction[0]:.2f}\")\n",
+    "\n",
+    "    st.subheader(\"Input Data\")\n",
+    "    st.dataframe(data)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 7,
+   "id": "d14b791c-2110-40eb-b551-a00d5eb51c9d",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "['GradientBoosting_model.pkl']"
+      ]
+     },
+     "execution_count": 7,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "\n",
+    "\n",
+    "joblib.dump(model, \"GradientBoosting_model.pkl\")"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "4512d4bc-5afa-4ffa-8f5d-31b30acdc18b",
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3 (ipykernel)",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.11.8"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 5
+}
