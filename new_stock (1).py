@@ -154,14 +154,7 @@
     "joblib.dump(model, \"GradientBoosting_model.pkl\")"
    ]
   },
-  {
-   "cell_type": "code",
-   "execution_count": none,
-   "id": "4512d4bc-5afa-4ffa-8f5d-31b30acdc18b",
-   "metadata": {},
-   "outputs": [],
-   "source": []
-  }
+ 
  ],
  "metadata": {
   "kernelspec": {
